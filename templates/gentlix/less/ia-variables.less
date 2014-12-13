@@ -1,0 +1,214 @@
+//
+// iaBootstrap Variables
+// --------------------------------------------------
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        @white;
+@textColor:             @grayDark;
+@baseDarkColor:         #272530;
+@baseBorder:            1px solid #fff;
+@baseColorBorder:       1px solid @linkColor;
+
+
+// Links
+// -------------------------
+@linkColor:             #38b7ea;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+// sections
+@sectionPadding:       40px 0;
+@sectionPaddingNarrow: 10px 0;
+@sectionBg:            transparent;
+@sectionLightBg:       #f5f5f5;
+@sectionDarkBg:        @baseDarkColor;
+@sectionBlackBg:       #333;
+
+
+// header
+@headerBg:                  @linkColor;
+@headerPadding:             0 0 20px;
+@headerHeadlineIconColor:   @linkColor;
+
+
+// inventory
+@inventoryBg:               rgba(0,0,0,0.15);
+@inventoryPadding:          0 0;
+
+@inventoryLinkColor:        lighten(@baseDarkColor, 55%);
+@inventoryLinkHoverColor:   #fff;
+@inventoryLinkHoverBg:      transparent;
+
+@inventoryLinkActiveColor:  #fff;
+@inventoryLinkActiveBg:     transparent;
+
+
+// navigation
+@navMainHeight:             35px;
+@navMainBg:                 #fff;
+
+@navMainLinkColor:          white;
+@navMainLinkHoverColor:     @linkColorHover;
+@navMainLinkHoverBg:        #f5f5f5;
+
+@navMainLinkActiveColor:    #fff;
+@navMainLinkActiveBg:       @linkColor;
+
+// navigation responsive
+@navMainCollapseWidth:        1020px;
+@navMainCollapseDesktopWidth: @navMainCollapseWidth;
+
+
+// Breadcrumbs
+@breadcrumbLinkColor:       #777;
+@breadcrumbLinkHoverColor:  @linkColor;
+@breadcrumbDividerColor:    #ccc;
+@breadcrumbActiveColor:     #999;
+
+
+// Boxes
+@boxMarginBottom:           30px;
+@boxCaptionColor:           #555;
+@boxCaptionBgColor:         lighten(#f5f5f5, 10%);
+@boxCaptionPadding:         20px;
+
+@boxBgColor:               	@boxCaptionBgColor;
+@boxTextColor:             	#777;
+@boxContentPadding:        	0 20px 20px;
+
+
+// Boxes - light background section
+@boxLightCaptionColor:      #777;
+@boxLightCaptionBgColor:    transparent;
+@boxLightCaptionPadding:    0;
+
+@boxLightBgColor:           @boxLightCaptionBgColor;
+@boxLightTextColor:         #777;
+@boxLightContentPadding:    20px 0 0;
+
+
+// Boxes - dark background section
+@boxDarkCaptionColor:       lighten(@baseDarkColor, 50%);
+@boxDarkCaptionBgColor:     transparent;
+@boxDarkCaptionPadding:     0;
+
+@boxDarkBgColor:            @boxDarkCaptionBgColor;
+@boxDarkTextColor:          lighten(@baseDarkColor, 30%);
+@boxDarkContentPadding:     20px 0 0;
+
+
+// Boxes variations
+@boxClearCaptionBgColor:    transparent;
+@boxClearBgColor:           transparent;
+@boxClearBorderColor:       #eee;
+
+
+// footer
+@footerTextColor:           #666;
+@footerBorderTop:           1px solid lighten(@sectionBlackBg, 10%);
+
+
+// IA COMPONENTS
+//---------------------------
+
+
+// tabs
+@navTabsBorderColor:       #eee;
+@navTabsBgColor:           #f5f5f5;
+@navTabsActiveBgColor:     #fff;
+@tabContentBg:             @navTabsActiveBgColor;
+
+
+// ia-item
+@iaItemMarginBottom:       30px;
+@iaItemBg:                 transparent;
+@iaItemPadding:            0;
+@iaItemColor:              #333;
+@iaItemHeadingSmallColor:  #ccc;
+@iaItemDateColor:          #999;
+
+@iaItemBorderedPadding:    10px;
+@iaItemBorderColor:        #eee;
+
+@iaItemBorderFeaturedColor:   #38b7ea;
+@iaItemBorderSponsoredColor:  #f98700;
+
+@iaItemPanelColor:         #aaa;
+@iaItemPanelBg:            #f5f5f5;
+
+@iaItemBadgeWidth:         26px;
+@iaItemBadgeHeight:        @iaItemBadgeWidth;
+@iaItemBadgeTenonWidth:    @iaItemBadgeWidth/2;
+@iaItemBadgeColor:         #666;
+@iaItemBadgeBgColor:       @iaItemBorderColor;
+
+@iaItemBadgeBannedColor:   #cc374b;
+@iaItemBadgeApprovalColor: #00acee;
+@iaItemBadgeSuspendedColor:#7aa59e;
+
+
+// ia-form
+@formBorderColor:          #eee;
+@formActionsBg:            #f7f7f7;
+
+@fieldsetTitleColor:       @headingsColor;
+@fieldsetTitleBgColor:     #f9f9f9;
+@fieldsetContentPadding:   20px;
+
+@formControlLabelColor:    #888;
+@formControlLabelFontSize: 12px;
+
+
+// Labels/badges
+@badgeSmallBg:             #f2f2f2;
+@badgeSmallColor:          #aaa;
+
+
+// Notification box
+@notifBoxBg:               #f9644e;
+@notifBoxColor:            #fff;
+@notifBoxBgSuccess:        #95ba12;
+@notifBoxBgError:          #f9644e;
+
+// Fonts
+@font-face {
+    font-family: 'robotothin';
+    src: url('fonts/Roboto-Thin-webfont.eot');
+    src: url('fonts/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Thin-webfont.woff') format('woff'),
+         url('fonts/Roboto-Thin-webfont.ttf') format('truetype'),
+         url('fonts/Roboto-Thin-webfont.svg#robotothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('fonts/Roboto-Light-webfont.eot');
+    src: url('fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('fonts/Roboto-Regular-webfont.eot');
+    src: url('fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@robotoLight:              'robotolight';
+@robotoThin:               'robotothin';
+@robotoRegular:            'robotoregular';
