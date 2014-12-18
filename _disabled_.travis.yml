@@ -1,0 +1,17 @@
+env:
+  global:
+    - secure: "gGMlGQQNam2cZNPGf3j5CsftkQM2QvrIF8vTIvv3R4O5qGvdZ7SCKTxysoh7FC+1paPZlZcdCYd6PiVw6nkHPyny6UJWN/litdubJJS3enSiuHYQxFAB4XM2i+yQDTuTUNkOIPPxBDGbLELmEW5Gjgv7JSNzFviVrYkdzx65HYU="
+    - secure: "aWO9nUU6D5ap1vaPwzE9Tt8T6dAB34iXlvn8FnMSKkZ/8ENLambXdeJJbWsDp112hB/VVX/llRmuEm3mV1SCpPJFkHhf/Sos7SvaanxFSGhm8Y/SFVRiKULTj7RhMLQhu6swq7ANJPsGsWkrPQfNS8sUaOZV2yxH4X+uYhnq6no="
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://f1.is-leibinger.de/web/themes"
+    "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://f1.is-leibinger.de/web/plugins"
+
+notifications:
+  email:
+    recipients:
+      - mailport@mikescher.de
+      - benz.armin89@gmail.com
+    on_success: always
+    on_failure: always
+
+# Fail if files other than themes & plugins have changed
