@@ -15,6 +15,8 @@ app/storage/
 # Internals
 ##############
 
+app/
+app/start/
 bootstrap/
 modules/
 uploads/
