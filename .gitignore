@@ -9,3 +9,14 @@
 
 
 app/storage/
+
+
+##############
+# Internals
+##############
+
+bootstrap/
+modules/
+uploads/
+vendor/
+artisan
