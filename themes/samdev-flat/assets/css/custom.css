@@ -2,3 +2,31 @@
     text-align: center;
     padding-bottom: 14px;
 }
+
+.well {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: #ecf0f1;
+	border: 1px solid #bdc3c7;
+	border-radius: 4px;
+	box-shadow: none;
+}
+
+.img-teammember {
+	border-radius: 1920px;
+	width: 100%;
+	height: auto;
+}
+
+.teammember-col {
+	background-color: #e74c3c;
+	margin-left: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.centered
+{
+    text-align:center;
+}

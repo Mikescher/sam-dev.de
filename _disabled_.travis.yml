@@ -2,8 +2,11 @@ env:
   global:
     - secure: "gGMlGQQNam2cZNPGf3j5CsftkQM2QvrIF8vTIvv3R4O5qGvdZ7SCKTxysoh7FC+1paPZlZcdCYd6PiVw6nkHPyny6UJWN/litdubJJS3enSiuHYQxFAB4XM2i+yQDTuTUNkOIPPxBDGbLELmEW5Gjgv7JSNzFviVrYkdzx65HYU="
     - secure: "aWO9nUU6D5ap1vaPwzE9Tt8T6dAB34iXlvn8FnMSKkZ/8ENLambXdeJJbWsDp112hB/VVX/llRmuEm3mV1SCpPJFkHhf/Sos7SvaanxFSGhm8Y/SFVRiKULTj7RhMLQhu6swq7ANJPsGsWkrPQfNS8sUaOZV2yxH4X+uYhnq6no="
+before_install:
+- sudo add-apt-get install lftp
+
 after_success:
-    "curl --ftp-create-dirs -T . -u $FTP_USER:$FTP_PASSWORD ftp://f1.is-leibinger.de/web/"
+    "lftp -u $FTP_USER,$FTP_PASSWORD -mirror -e . ftp://f1.is-leibinger.de/web"
 
 notifications:
   email:
