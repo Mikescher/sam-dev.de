@@ -8,9 +8,11 @@ description = "Default layout"
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="{{ 'assets/images/logo.png'|theme }}" />
         {% styles %}
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ [
             'assets/css/theme.css',
             'assets/css/custom.css',
+            'assets/vendor/font-awesome/css/font-awesome.css',
         ]|theme }}" rel="stylesheet">
     </head>
     <body class="page-{{ this.page.id }} layout-{{ this.layout.id }} layout-wrapper">

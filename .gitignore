@@ -15,10 +15,10 @@ app/storage/
 # Internals
 ##############
 
-app/
-app/start/
-bootstrap/
-modules/
-uploads/
-vendor/
-artisan
+/app/
+/app/start/
+/bootstrap/
+/modules/
+/uploads/
+/vendor/
+/artisan
