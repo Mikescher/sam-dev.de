@@ -9,7 +9,8 @@ description = "Default layout"
         <link rel="icon" type="image/png" href="{{ 'assets/images/logo.png'|theme }}" />
         {% styles %}
         <link href="{{ [
-            'assets/css/theme.css'
+            'assets/css/theme.css',
+            'assets/css/custom.css',
         ]|theme }}" rel="stylesheet">
     </head>
     <body class="page-{{ this.page.id }} layout-{{ this.layout.id }}">
