@@ -10,115 +10,87 @@ hidden = "0"
     ]|theme }}"></script>
 {% endput %}
 
-    <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container">
 
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Portfolio
-                    <small>Websites</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
+	<!-- Page Heading/Breadcrumbs -->
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Portfolio
+				<small>Websites</small>
+			</h1>
+		</div>
+	</div>
+	<!-- /.row -->
 
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolioitems/mvuhpitem.htm">
-                    <img class="img-responsive img-hover" src="{{ 'assets/images/portfolio/websites/mvuhp/mvuhp1.png'|theme }}" alt="">
-                </a>
-                <h3>
-                    <a href="portfolioitems/mvuhpitem.htm">Musikverein Unterharmersbach</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="{{ 'assets/images/portfolio/websites/mikehp/mike1.png'|theme }}" alt="">
-                </a>
-                <h3>
-                    <a href="portfolio-item.html">Mike Schwörer</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <!-- Projects Row -->
-<!--        <div class="row">
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="portfolio-item.html">Project Three</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="portfolio-item.html">Project Four</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
+	<div class="row">
+		{% partial "websitedisplay" 
+			Name="Jumping Joe Jumping Joe Jumping Joe " 
+			link='mvuhp'|page
+			Description='Hello Lorem ipsum dolor sit amet'
+			image='assets/images/portfolio/websites/mikehp/mike1.png'|theme %}
 
-        <!-- Projects Row -->
-<!--        <div class="row">
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="portfolio-item.html">Project Five</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-6 img-portfolio">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="portfolio-item.html">Project Six</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
+		{% partial "websitedisplay" 
+			Name="Musikverein Unterharmersbach" 
+			link='mvuhp'|page
+			image='assets/images/portfolio/websites/mvuhp/mvuhp1.png'|theme %}
+	</div>
 
-        <hr>
+	<div class="row">
+		{% partial "websitedisplay" 
+			Name="Pferdeseite" 
+			link='mvuhp'|page
+			Description='Hello Lorem ipsum dolor sit amet'
+			image='assets/images/portfolio/websites/mvuhp/mvuhp1.png'|theme %}
 
-        <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-<!--                   </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
--->            </div>
-        </div>
+		{% partial "websitedisplay" 
+			Name="Musikverein Unterharmersbach" 
+			link='mvuhp'|page
+			image='assets/images/portfolio/websites/mvuhp/mvuhp1.png'|theme %}
+	</div>
+	<div class="row">
+		{% partial "websitedisplay" 
+			Name="Jumping Joe" 
+			link='mvuhp'|page
+			Description='Hello Lorem ipsum dolor sit amet'
+			image='assets/images/portfolio/websites/mikehp/mike1.png'|theme %}
+
+		{% partial "websitedisplay" 
+			Name="Musikverein Unterharmersbach" 
+			link='mvuhp'|page
+			Description='Hello Lorem ipsum dolor sit amet'
+			image='assets/images/portfolio/websites/mvuhp/mvuhp1.png'|theme %}
+	</div>
+
+
+<!--
+	<div class="row text-center">
+		<div class="col-lg-12">
+			<ul class="pagination">
+				<li>
+					<a href="#">&laquo;</a>
+				</li>
+				<li class="active">
+					<a href="#">1</a>
+			   </li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">5</a>
+				</li>
+				<li>
+					<a href="#">&raquo;</a>
+				</li>
+			</ul>
+		</div>
+-->
+
+</div>

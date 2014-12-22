@@ -26,7 +26,29 @@
 	padding-bottom: 2%;
 }
 
-.centered
-{
+.centered {
     text-align:center;
+}
+
+.img-portfolio {
+    background-color: #3498db;
+    padding: 3%;
+    margin: 1%;
+}
+
+.img-portfolio h3 {
+    text-align: center;
+}
+
+.img-portfolio h3 a {
+    color: #c0392b;
+}
+
+.img-portfolio img {
+    border-radius: 16px;
+}
+
+.img-portfololio-cap {
+    border-radius: 16px;
+    background-color: #2980b9;
 }
