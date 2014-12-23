@@ -6,8 +6,8 @@ before_install:
 - sudo apt-get install lftp
 
 script:
-    "lftp -u $FTP_USER,$FTP_PASSWORD -e "set ftp:ssl-allow no; mirror -R -vvv -e plugins/ /web/plugins; exit" ftp://f1.is-leibinger.de/"
-    "lftp -u $FTP_USER,$FTP_PASSWORD -e "set ftp:ssl-allow no; mirror -R -vvv -e themes/  /web/themes ; exit" ftp://f1.is-leibinger.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -vvv -e plugins/ /web/plugins; exit\" ftp://f1.is-leibinger.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -vvv -e themes/  /web/themes ; exit\" ftp://f1.is-leibinger.de/"
 
 notifications:
   email:
