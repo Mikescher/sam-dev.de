@@ -3,6 +3,71 @@ url = "/"
 layout = "default"
 hidden = "0"
 ==
+<?php
+public function buildBaseString($baseURI, $method, $params) {
+	$r = array();
+	ksort($params);
+	foreach($params as $key=>$value){
+		$r[] = "$key=" . rawurlencode($value);
+	}
+	return $method."&" . rawurlencode($baseURI) . '&' . rawurlencode(implode('&', $r));
+}
+
+public function buildAuthorizationHeader($oauth) {
+	$r = 'Authorization: OAuth ';
+	$values = array();
+	foreach($oauth as $key=>$value)
+		$values[] = "$key=\"" . rawurlencode($value) . "\"";
+	$r .= implode(', ', $values);
+	return $r;
+}
+
+public function twitter_latest(){
+	$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+
+	$oauth_access_token = "***";
+	$oauth_access_token_secret = "***";
+	$consumer_key = "***";
+	$consumer_secret = "***";
+
+	$oauth = array( 'oauth_consumer_key' => $consumer_key,
+					'oauth_nonce' => time(),
+					'oauth_signature_method' => 'HMAC-SHA1',
+					'oauth_token' => $oauth_access_token,
+					'oauth_timestamp' => time(),
+					'oauth_version' => '1.0');
+
+	$base_info = $this->buildBaseString($url, 'GET', $oauth);
+	$composite_key = rawurlencode($consumer_secret) . '&' . rawurlencode($oauth_access_token_secret);
+	$oauth_signature = base64_encode(hash_hmac('sha1', $base_info, $composite_key, true));
+	$oauth['oauth_signature'] = $oauth_signature;
+
+	// Make Requests
+	$header = array($this->buildAuthorizationHeader($oauth), 'Expect:');
+	$options = array( CURLOPT_HTTPHEADER => $header,
+					  //CURLOPT_POSTFIELDS => $postfields,
+					  CURLOPT_HEADER => false,
+					  CURLOPT_URL => $url,
+					  CURLOPT_RETURNTRANSFER => true,
+					  CURLOPT_SSL_VERIFYPEER => false);
+
+	$feed = curl_init();
+	curl_setopt_array($feed, $options);
+	$json = curl_exec($feed);
+	curl_close($feed);
+
+	$twitter_data = json_decode($json);
+
+	return $twitter_data;
+}
+
+function onStart()
+{
+    $this['twitters'] = $this->twitter_latest();
+}
+
+?>
+==
 <section class="home-title">
     <div class="container">
     <h1>SAM Software Development</h1>
@@ -34,17 +99,20 @@ hidden = "0"
     <!-- Services -->
     <div class="row our-services">
         <div class="col-sm-12">
-            <h4 class="headline"><span>What we do</span></h4>
-            <p>He hasn't got a freckle my mad as a middy. Trent from punchy maccas no dramas shazza got us some ripper. As dry as a bradman flamin lets throw a cut lunch commando.</p>
+            <h4 class="headline"><span>Was wir tun</span></h4>
+            <p>
+                SAM Dev ist ein kleines Entwicklerstudio im Schwarzwald. Wir haben Efahrung in der Entwicklung von Apps für die Android PLattform und beim Erstellen von Websiten für Privatpersonen und Vereine.
+                Trotzdem sind wir auch offen für AUfträge in anderen Bereichen, besonders in den Bereichen Windows und Web Applications.
+            </p>
 
-            <div class="row">
+            <div class="row"> <!--  icons via http://daftspunk.github.io/Font-Autumn/ -->
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-gear"></i>
+                            <i class="icon-cogs"></i>
                             <div class="service-desc">
-                                <h5>Built with Bootstrap 3</h5>
-                                <p>Bacon ipsum dolor sit amet rump tri-tip pig pork chop. Doner tri-tip shoulder, andouille sausage filet mignon beef ribs drumstick.</p>
+                                <h5>Kleines Entwicklerteam</h5>
+                                <p>Unsere Göße erlaubt es dynamisch auf Kundenwünsche zu reagieren und Ihnen das bestmögliche Produkt zu liefern</p>
                             </div>
                         </div>
                     </div>
@@ -52,10 +120,10 @@ hidden = "0"
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-laptop"></i>
+                            <i class="icon-android"></i>
                             <div class="service-desc">
-                                <h5>Responsive design</h5>
-                                <p>Salami turkey jowl rump jerky ball tip drumstick ground round tenderloin kielbasa hamburger prosciutto. </p>
+                                <h5>2D Android Anwendungen</h5>
+                                <p>Zweidimensionale Android Applikationen können wir mit unserer eigene 2D Engine entwickeln</p>
                             </div>
                         </div>
                     </div>
@@ -63,10 +131,10 @@ hidden = "0"
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-refresh"></i>
+                            <i class="icon-code-fork"></i>
                             <div class="service-desc">
-                                <h5>Easy to customize</h5>
-                                <p>T-bone tongue turducken hamburger, doner sirloin rump pork jowl cow. Beef rump ham hock brisket.</p>
+                                <h5>Innovative Ideen</h5>
+                                <p>Unser Team besteht aus jungen Entwicklern die ihr Produkt gerne mit ihren eigenen Ideen erweitern.</p>
                             </div>
                         </div>
                     </div>
@@ -76,10 +144,10 @@ hidden = "0"
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-plus"></i>
+                            <i class="icon-bolt"></i>
                             <div class="service-desc">
-                                <h5>Works out of the box</h5>
-                                <p>Pork belly chicken turkey andouille t-bone ribeye tenderloin prosciutto flank chuck porchetta.</p>
+                                <h5>Schnelle Entwicklung</h5>
+                                <p>Unser kleines und dynamisches Entwicklerteam ermöglicht es uns schnell auf Aufträge zu reagieren und diese zu bearbeiten</p>
                             </div>
                         </div>
                     </div>
@@ -87,10 +155,10 @@ hidden = "0"
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-envelope"></i>
+                            <i class="icon-flag-checkered"></i>
                             <div class="service-desc">
-                                <h5>24/7 support</h5>
-                                <p>Kielbasa chicken doner filet mignon meatball salami ground round prosciutto spare ribs jerky meatloaf shankle bacon beef swine.</p>
+                                <h5>Mehrsprachigkeit</h5>
+                                <p>Auf Wunsch könen wir Anwendungen sowohl in Deutsch als auch in Englisch entwicklen, gerne auch mehrsprachig.</p>
                             </div>
                         </div>
                     </div>
@@ -98,10 +166,10 @@ hidden = "0"
                 <div class="col-sm-4">
                     <div class="services">
                         <div class="service-item">
-                            <i class="icon-picture"></i>
+                            <i class="icon-briefcase"></i>
                             <div class="service-desc">
-                                <h5>Special Portfolio</h5>
-                                <p>Short loin pork belly beef, tenderloin swine ribeye tri-tip doner salami rump hamburger kielbasa venison beef ribs brisket.</p>
+                                <h5>Wordpress Seiten</h5>
+                                <p>Wir haben in der Vergangenheit schon für mehrere Vereine und Privatpersonen Wordpress Seiten eingerichtet und angepasst</p>
                             </div>
                         </div>
                     </div>
@@ -110,6 +178,10 @@ hidden = "0"
 
         </div>
     </div>
+
+    {% for twitter in twitters %}  
+        {{ twitter.text }}
+    {% endfor %}
 
     <div class="recent-tweets">
         <h4 class="headline"><span>Recent tweets</span></h4>
