@@ -22,13 +22,18 @@ public function buildAuthorizationHeader($oauth) {
 	return $r;
 }
 
+public function configGet($name) {
+    $arr = include '/app/config/sam.php';
+    return $arr["$name"];
+}
+
 public function twitter_latest(){
 	$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 
-	$oauth_access_token = "***";
-	$oauth_access_token_secret = "***";
-	$consumer_key = "***";
-	$consumer_secret = "***";
+	$oauth_access_token =        $this->configGet('oauth_access_token');
+	$oauth_access_token_secret = $this->configGet('oauth_access_token_secret');
+	$consumer_key =              $this->configGet('consumer_key');
+	$consumer_secret =           $this->configGet('consumer_secret');
 
 	$oauth = array( 'oauth_consumer_key' => $consumer_key,
 					'oauth_nonce' => time(),
@@ -58,12 +63,16 @@ public function twitter_latest(){
 
 	$twitter_data = json_decode($json);
 
+	foreach ($twitter_data as $tweet) {
+		$tweet->created_at = (new DateTime())->diff(new DateTime($tweet->created_at))->format('%d');
+	}
+
 	return $twitter_data;
 }
 
 function onStart()
 {
-    $this['twitters'] = $this->twitter_latest();
+    $this['twitters'] = array_slice ($this->twitter_latest(), 0, 4);
 }
 
 ?>
@@ -179,26 +188,19 @@ function onStart()
         </div>
     </div>
 
-    {% for twitter in twitters %}  
-        {{ twitter.text }}
-    {% endfor %}
+
 
     <div class="recent-tweets">
         <h4 class="headline"><span>Recent tweets</span></h4>
+        {% for twitter in twitters %}  
         <div class="tweet">
             <i class="icon-twitter"></i>
             <p>
-                Salami turkey jowl rump jerky ball tip drumstick ground round tenderloin kielbasa hamburger prosciutto.
-                <a href="#">1 day ago</a>
+                {{ twitter.text }}
+                <a href="https://twitter.com/sam_d3v3lopment/status/{{twitter.id}}">{{ twitter.created_at }} day ago</a>
             </p>
         </div>
-        <div class="tweet">
-            <i class="icon-twitter"></i>
-            <p>
-                Short loin pork belly beef, tenderloin swine ribeye tri-tip doner salami rump hamburger.
-                <a href="#">2 days ago</a>
-            </p>
-        </div>
+        {% endfor %}
     </div>
 
 </div>
