@@ -27,10 +27,9 @@ function onSendmail()
                'Reply-To: ' .$email . "\r\n" .
                'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
+    mail($to, $subject, $message, $headers);
 
-
-    $this['mailresult'] = "Mail to contact@sam-dev.de successfully send";
+    $this['mailresult'] = "Mail to contact@sam-dev.de from $email successfully send";
     return true;
 }
 
@@ -72,26 +71,26 @@ function onTest()
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Name:</label>
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" class="form-control" id="name" name="name">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Tel. Nr.:</label>
-                            <input type="tel" class="form-control" id="phone">
+                            <input type="tel" class="form-control" id="phone" name="phone">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Email Adresse:</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Nachricht:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="message" maxlength="999" style="resize:none"></textarea>
+                            <textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none"></textarea>
                         </div>
                     </div>
                     <div class="control-group form-group">
