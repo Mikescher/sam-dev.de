@@ -1,5 +1,9 @@
 ==
 {% if mailresult != null %}
-    <span class="label label-success">{{ mailresult }}</span>
+    {% if mailsucc %}
+        <span class="label label-success">{{ mailresult }}</span>
+    {% else %}
+        <span class="label label-danger">{{ mailresult }}</span>
+    {% endif %}
 {% else %}
 {% endif %}
