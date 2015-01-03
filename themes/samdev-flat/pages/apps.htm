@@ -1,0 +1,60 @@
+title = "Mobile Apps"
+url = "/apps"
+layout = "default"
+hidden = "0"
+==
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">Unsere eigenen Apps</h1>
+        </div>
+    </div>
+
+{% partial "app" 
+    title="Jumping Joe" 
+    description="Um nicht zu verhungern muss Joe Kirschen essen. Hilf dem süßen Joe durch Laufen und Springen über die verschiedenen Levels. Dabei muss Joe über verschiedene Hindernisse wie Fliegenpilze, Felsen oder Stacheln im Boden springen. :)
+	Das Spiel macht Spaß sobald man mit Joe versucht die Welt zu durchlaufen"
+    tags=["Android", "Game", "Sidescroller", "LibGDX"]
+    date="23.9.2014" 
+    links=
+    [
+        ["Playstore", "https://play.google.com/store/apps/details?id=de.samdev.jumpingjoe", "primary"],
+        ["Github", "https://github.com/Sam-Development/JumpingJoe", "info"]
+    ]
+    stars= 4
+    author="SAM SoftwareDevelopment"
+    authorlink="https://play.google.com/store/apps/developer?id=SAM+Softwaredevelopment"
+    image='assets/images/apps/jumpingjoe.png'|theme %}
+
+{% partial "app"
+    title="Tommys Money"
+    description="No risk, no cash! Gewinnen, viel gewinnen, oder alles verlieren? Einfaches Spiel, riskantes Spiel, oder zu viel gewollt? Steige in das nächste Level auf und spiele Items frei, indem du mit Tommy Münzen sammelst. "
+    tags=["Android", "Game", "LibGDX"]
+    date="3.10.2014"
+    link=""
+    links=
+    [
+        ["Playstore", "https://play.google.com/store/apps/details?id=de.samdev.tommysMoney", "primary"]
+    ]
+    stars=3
+    author="Simon Streblow"
+    authorlink="/about"
+    image='assets/images/apps/tommysmoney.png'|theme %}
+
+{% partial "app"
+    title="ROFLcopter"
+    description="Teste dein Geschick, indem du den Roflcopter durch die Lüfte jagst und den Bomben ausweichst. Erobere den Highscore von Roflcopter und messe dich mit anderen Spieler. Wer wird der beste sein?"
+    tags=["Android", "Game", "Sidescroller", "LibGDX"]
+    date="7.8.2014"
+    link="https://play.google.com/store/apps/details?id=de.Streblow.Roflcopter"
+    links=
+    [
+        ["Playstore", "https://play.google.com/store/apps/details?id=de.samdev.tommysMoney", "primary"]
+    ]
+    stars=3
+    author="Simon Streblow"
+    authorlink="/about"
+    image='assets/images/apps/roflcopter.png'|theme %}
+
+</div>

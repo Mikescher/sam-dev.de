@@ -1,0 +1,24 @@
+.DS_Store
+*.log
+
+.idea/
+
+###################
+###   OCTOBER   ###
+###################
+
+
+app/storage/
+
+
+##############
+# Internals
+##############
+
+/app/
+/app/start/
+/bootstrap/
+/modules/
+/uploads/
+/vendor/
+/artisan

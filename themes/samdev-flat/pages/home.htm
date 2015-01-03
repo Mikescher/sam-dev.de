@@ -1,0 +1,212 @@
+title = "Index"
+url = "/"
+layout = "default"
+hidden = "0"
+==
+<?php
+public function buildBaseString($baseURI, $method, $params) {
+	$r = array();
+	ksort($params);
+	foreach($params as $key=>$value){
+		$r[] = "$key=" . rawurlencode($value);
+	}
+	return $method."&" . rawurlencode($baseURI) . '&' . rawurlencode(implode('&', $r));
+}
+
+public function buildAuthorizationHeader($oauth) {
+	$r = 'Authorization: OAuth ';
+	$values = array();
+	foreach($oauth as $key=>$value)
+		$values[] = "$key=\"" . rawurlencode($value) . "\"";
+	$r .= implode(', ', $values);
+	return $r;
+}
+
+public function configGet($name) {
+    $arr = include '/app/config/sam.php';
+    return $arr["$name"];
+}
+
+public function twitter_latest(){
+	try {
+		$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+
+		$oauth_access_token =        $this->configGet('oauth_access_token');
+		$oauth_access_token_secret = $this->configGet('oauth_access_token_secret');
+		$consumer_key =              $this->configGet('consumer_key');
+		$consumer_secret =           $this->configGet('consumer_secret');
+
+		$oauth = array( 'oauth_consumer_key' => $consumer_key,
+						'oauth_nonce' => time(),
+						'oauth_signature_method' => 'HMAC-SHA1',
+						'oauth_token' => $oauth_access_token,
+						'oauth_timestamp' => time(),
+						'oauth_version' => '1.0');
+
+		$base_info = $this->buildBaseString($url, 'GET', $oauth);
+		$composite_key = rawurlencode($consumer_secret) . '&' . rawurlencode($oauth_access_token_secret);
+		$oauth_signature = base64_encode(hash_hmac('sha1', $base_info, $composite_key, true));
+		$oauth['oauth_signature'] = $oauth_signature;
+
+		// Make Requests
+		$header = array($this->buildAuthorizationHeader($oauth), 'Expect:');
+		$options = array( CURLOPT_HTTPHEADER => $header,
+						  //CURLOPT_POSTFIELDS => $postfields,
+						  CURLOPT_HEADER => false,
+						  CURLOPT_URL => $url,
+						  CURLOPT_RETURNTRANSFER => true,
+						  CURLOPT_SSL_VERIFYPEER => false);
+
+		$feed = curl_init();
+		curl_setopt_array($feed, $options);
+		$json = curl_exec($feed);
+		curl_close($feed);
+
+		$twitter_data = json_decode($json);
+
+		foreach ($twitter_data as $tweet) {
+			$tweet->created_at = (new DateTime())->diff(new DateTime($tweet->created_at))->format('%d');
+		}
+
+		return $twitter_data;
+	} catch (Exception $e) {
+		return [];
+	}
+}
+
+function onStart()
+{
+    $this['twitters'] = array_slice ($this->twitter_latest(), 0, 4);
+}
+
+?>
+==
+<section class="sam-home-title">
+    <div class="container">
+   <!-- <h2>SAM Software Development</h2>  -->
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="tile">
+                    <img class="img-responsive" src="{{ 'assets/images/index/img_apps.png'|theme }}" alt="">
+                    <h4>App Entwicklung</h4>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="tile">
+                    <img class="img-responsive" src="{{ 'assets/images/index/img_websites.png'|theme }}" alt="">
+                    <h4>Responsive Websites</h4>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="tile">
+                    <img class="img-responsive" src="{{ 'assets/images/index/img_other.png'|theme }}" alt="">
+                    <h4>Weitere Projekte</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- Services -->
+    <div class="row our-services">
+        <div class="col-xs-12">
+            <h4 class="headline"><span>Wer wir sind</span></h4>
+            <p>
+                SAM Dev ist ein kleines Entwicklerstudio im Schwarzwald. Wir haben Erfahrung in der Entwicklung von Apps für die Android Plattform und beim Erstellen von Websiten für Vereine und Privatpersonen.
+                Trotzdem sind wir auch offen für Aufträge in anderen Bereichen, besonders in den Bereichen Windows und Web Applications.
+            </p>
+
+            <div class="row"> <!--  icons via http://daftspunk.github.io/Font-Autumn/ -->
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-cogs"></i>
+                            <div class="service-desc">
+                                <h5>Kleines Entwicklerteam</h5>
+                                <p>Wir können dynamisch auf Kundenwünsche reagieren und Ihnen das bestmögliche Produkt zu liefern</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-android"></i>
+                            <div class="service-desc">
+                                <h5>2D Android Anwendungen</h5>
+                                <p>Zweidimensionale Android Applikationen können wir mit unserer eigene 2D Engine entwickeln</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-code-fork"></i>
+                            <div class="service-desc">
+                                <h5>Innovative Ideen</h5>
+                                <p>Unser junges Team findet mit Ihnen die optimale Lösung</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-bolt"></i>
+                            <div class="service-desc">
+                                <h5>Schnelle Entwicklung</h5>
+                                <p>Unser kleines und dynamisches Entwicklerteam ermöglicht es uns schnell auf Aufträge zu reagieren und diese zu bearbeiten</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-flag-checkered"></i>
+                            <div class="service-desc">
+                                <h5>Mehrsprachigkeit</h5>
+                                <p>Auf Wunsch könen wir Anwendungen sowohl in Deutsch als auch in Englisch entwicklen, gerne auch in Deutsch und Englisch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="icon-briefcase"></i>
+                            <div class="service-desc">
+                                <h5>Wordpress Seiten</h5>
+                                <p>Wir haben schon für mehrere Vereine und Privatpersonen Wordpress Seiten eingerichtet und angepasst. Wir richten auch gerne für Sie Ihre Wordpress Seiten ein und betreuen diese mit Ihnen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="recent-tweets">
+        <h4 class="headline"><span>Recent tweets</span></h4>
+        {% for twitter in twitters %}  
+        <div class="tweet">
+            <i class="icon-twitter"></i>
+            <p>
+                {{ twitter.text }}
+                <a href="https://twitter.com/sam_d3v3lopment/status/{{twitter.id}}">{{ twitter.created_at }} day ago</a>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<br />

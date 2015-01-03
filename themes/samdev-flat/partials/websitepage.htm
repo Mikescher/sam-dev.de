@@ -1,0 +1,79 @@
+==
+{% put scripts %}
+<script src="{{ [
+        'assets/vendor/isotope/jquery.isotope.js',
+        'assets/javascript/pages/portfolio.js',
+    ]|theme }}"></script>
+{% endput %}
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">Portfolio Websites
+                <small>{{Name}}</small>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-7 flatbox" style="padding: 1%">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for image in images %}
+                        {% if loop.index == 0 %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{loop.index}}" class="active"></li>
+                        {% else %}
+                             <li data-target="#carousel-example-generic" data-slide-to="{{loop.index}}"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+
+                <div class="carousel-inner">
+                    {% for image in images %}
+                        {% if loop.index0 == 0 %}
+                            <div class="item active">
+                                <img class="img-responsive" src="{{image}}" alt="">
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                <img class="img-responsive" src="{{image}}" alt="">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-5">
+            <div class="flatbox">
+                <h3>Projektbeschreibung</h3>
+                <p>{{Description}}</p>
+            </div>
+            <div class="flatbox">
+                <h3>Projektdetails</h3>
+                <ul>
+                    {% for detail in details %}
+                    <li>{{detail}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="btn btn-info" style="width: 100%"><strong><a href="{{pagelink}}" class="hiddenwhitelink">Website</a></strong></div>
+        </div>
+    </div>
+
+    {% partial "websitecrossref"
+        ThisName=Name %}
+
+</div>

@@ -1,0 +1,66 @@
+title = "Websites"
+url = "/portfolio/websites"
+layout = "default"
+hidden = "0"
+==
+{% put scripts %}
+<script src="{{ [
+        'assets/vendor/isotope/jquery.isotope.js',
+        'assets/javascript/pages/portfolio.js',
+    ]|theme }}"></script>
+{% endput %}
+
+<!-- Page Content -->
+<div class="container container-xs-height">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">Portfolio
+                <small>Websites</small>
+            </h1>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<div class="container container-xs-height">
+    <div class="row row-xs-height">
+
+        {% partial "websitedisplay"
+            Name="Musikverein Unterhamersbach"
+            link='/portfolio/websites/mvu'
+            Description='Die Website des Musikvereins Unterharmersbach.'
+            image='assets/images/portfolio/websites/mvu/mvu1.png'|theme
+            Enabled=true
+        %}
+
+        <div class="col-xs-1 col-xs-height"></div>
+
+        {% partial "websitedisplay"
+            Name="Architekturbüro Bruder"
+            link='/portfolio/websites/bruder'
+            Description='Die Firmen Website vom Architekturbüro Christian Bruder.'
+            image='assets/images/portfolio/websites/bruder/bruder1.png'|theme %}
+    </div>
+    <p>&nbsp;</p>
+</div>
+
+<div class="container container-xs-height">
+    <div class="row row-xs-height">
+
+        {% partial "websitedisplay"
+        Name="Pferdeverein"
+        link='/portfolio/websites/pferdeverein'
+        Description='Die ist die Website von irgend so einem Pferdeverein'
+        image='assets/images/portfolio/websites/pferdeverein/pferdeverein1.png'|theme %}
+
+        <div class="col-xs-1 col-xs-height"></div>
+
+        <!--NEXT-->
+        <div class="col-xs-5 col-xs-height"></div><!--Platzhalter-->
+        <!--/NEXT-->
+
+    </div>
+    <p>&nbsp;</p>
+</div>

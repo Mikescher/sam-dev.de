@@ -1,0 +1,26 @@
+==
+<div class="row">
+
+    <div class="col-xs-12">
+        <h3 class="page-header">Weitere Websites</h3>
+    </div>
+</div>
+<div class="row flatbox">
+    {% partial "websitecrossrefdisplay"
+        Name="Musikverein Unterhamersbach"
+        Link='/portfolio/websites/mvu'
+        Image='/assets/images/portfolio/websites/mvu/mvu1.png'|theme
+        Excluded=ThisName %}
+
+    {% partial "websitecrossrefdisplay"
+        Name="Pferdeverein"
+        Link='/portfolio/websites/pferdeverein'
+        Image='/assets/images/portfolio/websites/pferdeverein/pferdeverein2.png'|theme
+        Excluded=ThisName %}
+
+    {% partial "websitecrossrefdisplay"
+        Name="Architekturbüro Bruder"
+        Link='/portfolio/websites/bruder'
+        Image='/assets/images/portfolio/websites/bruder/bruder1.png'|theme
+        Excluded=ThisName %}
+</div>

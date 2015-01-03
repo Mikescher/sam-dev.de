@@ -1,0 +1,143 @@
+title = "Kontakt"
+url = "/contact"
+layout = "default"
+hidden = "0"
+==
+<?php
+function onSendmail()
+{
+    $name = post('name');
+    $phone = post('phone');
+    $email = post('email');
+    $message = post('message');
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $time = time();
+
+    if (empty($name))
+    {
+        $this['mailresult'] = "Bitte das Feld 'Name' ausfüllen";
+        $this['mailsucc'] = false;
+        return false;
+    }
+
+    if (empty($email))
+    {
+        $this['mailresult'] = "Bitte das Feld 'Email Adresse' ausfüllen";
+        $this['mailsucc'] = false;
+        return false;
+    }
+
+    if (! preg_match('/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/', $email))
+    {
+        $this['mailresult'] = "Bitte eine korrekte Mailadresse angeben";
+        $this['mailsucc'] = false;
+        return false;
+    }
+
+    if (empty($message))
+    {
+        $this['mailresult'] = "Bitte das Feld 'Nachricht' ausfüllen";
+        $this['mailsucc'] = false;
+        return false;
+    }
+
+    $to      = 'contact@sam-dev.de';
+    $subject = 'MAIL via sam-dev-contact from "' . $email . '"';
+    $message = "Message from sam-dev contact forular" . "\r\n" . 
+               "IP: $ip" . "\r\n" . 
+               "TIME: $time" . "\r\n" . 
+               "Name: $name" . "\r\n" .
+               "Phone: $phone" . "\r\n" .
+               "Mail-Addr: $email" . "\r\n" .
+               "Message: $message" . "\r\n" . $message;
+
+    $headers = 'From: contact@sam-dev.de' . "\r\n" .
+               'Reply-To: ' .$email . "\r\n" .
+               'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+
+    $this['mailresult'] = "Mail to contact@sam-dev.de from $email successfully send";
+    $this['mailsucc'] = true;
+    return true;
+}
+?>
+==
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading-->
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">Kontakt</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Contact Details Column -->
+        <div class="col-xs-8">
+            <div class="flatbox">
+                <p>Simon Streblow, Armin Benz, Mike Schwoerer, SAM SoftwareDevelopment, GbR </p>
+
+                <p>Hauptstraße 109 </p>
+
+                <p>77736 Zell a. H. </p>
+
+                <p>Email: <a href="mailto:contact@sam-dev.de" class="label label-info">contact@sam-dev.de</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Contact Form -->
+    <!-- Naaaa the php file is here -> bin/contact_me.php -->
+    <div class="row">
+        <div class="col-xs-8">
+            <h3>Sende uns eine Nachricht</h3>
+
+            <form name="sentMessage" id="contactForm" class="flatbox" data-request="onSendmail"
+                  data-request-update="mailsendresult: '#smresult'">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" id="name" name="name">
+
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Tel. Nr.:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Email Adresse:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Nachricht:</label>
+                        <textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999"
+                                  style="resize:none"></textarea>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <!-- For success/fail messages -->
+                    <div id="smresult">{% partial "mailsendresult" %}</div>
+                </div>
+
+                <div class="darkflatbox">
+                    <button type="submit" class="btn btn-primary">Senden</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <hr>

@@ -1,0 +1,48 @@
+==
+<div class="row approw">
+  <div class="col-md-offset-1 col-md-10 well">
+    <div class="row">
+      <div class="span8">
+        <strong><h3><a href="{{links[0][1]}}" class="hiddenlink">{{ title }}</a></h3></strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">
+        <a href="{{links[0][1]}}" class="thumbnail">
+            <img src="{{ image }}" alt="">
+        </a>
+      </div>
+      <div class="col-xs-9">
+        <p>
+          {{ description }}
+        </p>
+
+          <p>
+          {% for link in links %}
+              <a href="{{link[1]}}" class="btn btn-{{link[2]}}"><strong>{{link[0]}}</strong></a>
+          {% endfor %}
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span8">
+        <p></p>
+        <p>
+          <i class="icon-user"></i> von <a href="{{authorlink}}" class="hiddenlink">{{author}}</a>
+          | <i class="icon-calendar"></i> am {{date}}
+          | 
+          {% for i in 1..stars %}
+               <span class="glyphicon glyphicon-star"></span>
+          {% endfor %}
+          {% for i in 4..stars %}
+               <span class="glyphicon glyphicon-star-empty"></span>
+          {% endfor %}
+          | <i class="icon-tags"></i> Tags : 
+           {% for tag in tags %}
+          <span class="label label-info">{{ tag }}</span>
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
