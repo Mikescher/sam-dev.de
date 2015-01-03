@@ -52,3 +52,21 @@
     border-radius: 16px;
     background-color: #2980b9;
 }
+
+.flatbox {
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #EFF0F2;
+}
+
+.darkflatbox {
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #EFF0F2;
+}
+
+.label-info {
+    background-color: #2980b9;
+}
