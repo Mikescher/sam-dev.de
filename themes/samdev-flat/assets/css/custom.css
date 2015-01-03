@@ -1,3 +1,7 @@
+html,body {
+    height:100%;
+}
+
 .home-title  h1 {
     text-align: center;
     padding-bottom: 14px;
@@ -32,9 +36,14 @@
 }
 
 .img-portfolio {
-    background-color: #3498db;
     padding: 3%;
     margin: 1%;
+    height: 100%;
+
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
 .img-portfolio h3 {
@@ -42,16 +51,16 @@
 }
 
 .img-portfolio h3 a {
-    color: #c0392b;
+    color: #34495E;
 }
 
 .img-portfolio img {
-    border-radius: 16px;
+
 }
 
 .img-portfololio-cap {
     border-radius: 16px;
-    background-color: #2980b9;
+    background-color: #bdc3c7;
 }
 
 .flatbox {
