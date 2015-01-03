@@ -7,6 +7,14 @@ html,body {
     padding-bottom: 14px;
 }
 
+.sam-home-title {
+    background: #BDC3C7;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #34495e;
+    position: relative;
+}
+
 .well {
 	min-height: 20px;
 	padding: 19px;
