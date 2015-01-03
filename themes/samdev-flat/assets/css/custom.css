@@ -165,6 +165,14 @@ html,body {
     color: #34495E;
 }
 
+.hiddenwhitelink {
+    color: #FFFFFF;
+}
+
+.hiddenwhitelink:hover {
+    color: #FFFFFF;
+}
+
 .approw .well {
     padding-bottom: 0;
 }
