@@ -146,3 +146,16 @@
     position: relative;
     vertical-align:bottom;
 }
+
+.approw h3 {
+    color: #34495E;
+    margin-top: 0;
+}
+
+.hiddenlink {
+    color: #34495E;
+}
+
+.approw .well {
+    padding-bottom: 0;
+}
