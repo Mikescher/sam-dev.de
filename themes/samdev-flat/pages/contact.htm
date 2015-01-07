@@ -43,9 +43,9 @@ function onSendmail()
 
     $to      = 'contact@sam-dev.de';
     $subject = 'MAIL via sam-dev-contact from "' . $email . '"';
-    $message = "Message from sam-dev contact forular" . "\r\n" . 
-               "IP: $ip" . "\r\n" . 
-               "TIME: $time" . "\r\n" . 
+    $message = "Message from sam-dev contact forular" . "\r\n" .
+               "IP: $ip" . "\r\n" .
+               "TIME: $time" . "\r\n" .
                "Name: $name" . "\r\n" .
                "Phone: $phone" . "\r\n" .
                "Mail-Addr: $email" . "\r\n" .
@@ -77,7 +77,7 @@ function onSendmail()
     <!-- Content Row -->
     <div class="row">
         <!-- Contact Details Column -->
-        <div class="col-xs-8">
+        <div class="col-sm-12">
             <div class="flatbox">
                 <p>Simon Streblow, Armin Benz, Mike Schwoerer, SAM SoftwareDevelopment, GbR </p>
 
@@ -94,7 +94,7 @@ function onSendmail()
     <!-- Contact Form -->
     <!-- Naaaa the php file is here -> bin/contact_me.php -->
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-sm-12">
             <h3>Sende uns eine Nachricht</h3>
 
             <form name="sentMessage" id="contactForm" class="flatbox" data-request="onSendmail"

@@ -15,6 +15,52 @@ html,body {
     position: relative;
 }
 
+.hometilecaption {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.1;
+  color: inherit;
+}
+
+@media only screen and (min-width: 768px) {
+  .hometilecaption {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hometilecaption {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .hometilecaption {
+    font-size: 29px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+  }
+}
+
 .well {
 	min-height: 20px;
 	padding: 19px;
