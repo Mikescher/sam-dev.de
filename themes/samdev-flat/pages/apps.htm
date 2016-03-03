@@ -10,7 +10,27 @@ hidden = "0"
             <h1 class="page-header">Unsere eigenen Apps</h1>
         </div>
     </div>
-
+	
+{% partial "app" 
+    title="Bitcoin Balance Widget" 
+    description="Dieses Widget zeigt die Balance von einer oder mehreren BTC-Adressen auf Ihrem Homescreen an.
+	Hauptmerkmale:
+		- Zeigt die gesamte Balance von einem oder mehreren BTC Adressen
+		- Zeigen Sie Ihre Balance in BTC, MBTC, Bits (uBTC) oder satoshi
+		- Adressen über eine QR-Code Scanner hinzufügen
+		- Teilen der Adressen über QR-Code"
+    tags=["Android", "Finanzen", "Bitcoin", "Widget"]
+    date="06.12.2015" 
+    links=
+    [
+        ["Playstore", "https://play.google.com/store/apps/details?id=samdev.de.bitcoinbalance", "primary"],
+		["Github", "https://github.com/Mikescher/BitcoinBalance", "info"]
+    ]
+    stars= 5
+    author="Mike Schwörer"
+    authorlink="/about"
+    image='assets/images/apps/bbw.png'|theme %}
+		
 {% partial "app" 
     title="Jumping Joe" 
     description="Um nicht zu verhungern muss Joe Kirschen essen. Hilf dem süßen Joe durch Laufen und Springen über die verschiedenen Levels. Dabei muss Joe über verschiedene Hindernisse wie Fliegenpilze, Felsen oder Stacheln im Boden springen. :)
