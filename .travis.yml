@@ -2,20 +2,20 @@ before_install:
 - sudo apt-get install lftp
 
 script:
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -e plugins/          /plugins               ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -e themes/           /themes                ; exit\" ftp://sam1.sam-⁠dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -e plugins/          /plugins               ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mirror -R -e themes/           /themes                ; exit\" ftp://sam1.sam-dev.de/"
 
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/cache        /app/storage/cache_    ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/twig         /app/storage/twig_     ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/sessions     /app/storage/sessions_ ; exit\" ftp://sam1.sam-⁠dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/cache        /app/storage/cache_    ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/twig         /app/storage/twig_     ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mv   /app/storage/sessions     /app/storage/sessions_ ; exit\" ftp://sam1.sam-dev.de/"
 
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/cache     ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/twig      ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/sessions  ; exit\" ftp://sam1.sam-⁠dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/cache     ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/twig      ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; mkdir                          /app/storage/sessions  ; exit\" ftp://sam1.sam-dev.de/"
 
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/cache_    ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/twig_     ; exit\" ftp://sam1.sam-⁠dev.de/"
-    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/sessions_ ; exit\" ftp://sam1.sam-⁠dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/cache_    ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/twig_     ; exit\" ftp://sam1.sam-dev.de/"
+    - "lftp -u $FTP_USER,$FTP_PASSWORD -e \"set ftp:ssl-allow no; rm -r                          /app/storage/sessions_ ; exit\" ftp://sam1.sam-dev.de/"
 
 notifications:
   email:
@@ -25,3 +25,4 @@ notifications:
       - simon.streblow@sam-dev.de
     on_success: always
     on_failure: always
+
